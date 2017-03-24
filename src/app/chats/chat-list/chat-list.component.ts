@@ -11,7 +11,6 @@ import { Subscription } from "rxjs";
 
 export class ChatListComponent implements OnInit, OnDestroy {
   @Input() chats: Promise<Chat[]>;
-
   private selectedId: number;
   private searchValue: string = '';
   private subscription: Subscription;
@@ -22,17 +21,16 @@ export class ChatListComponent implements OnInit, OnDestroy {
     private service: ChatService
   ) {}
 
-  private select(chat) {
-    this.selectedId = chat.id;
-
-    // Navigate with relative link
-    this.router.navigate(['chat', chat.id])
-  }
-
   public ngOnInit(): void {
     this.subscription = this.service
       .getSearchValue()
       .subscribe(value => this.searchValue = value)
+  }
+
+  select(chat) {
+    this.selectedId = chat.id;
+    this.router.navigate(['chat', chat.id])
+    this.searchValue = '';
   }
 
   public ngOnDestroy(): void {

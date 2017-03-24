@@ -9,8 +9,8 @@ import { ChatService } from "app/chats/shared";
 })
 
 export class ChatNavComponent {
-  private isMenuOpen:boolean = false;
-  private isChatPanelOpen:boolean = false;
+  private isMenuOpen: boolean = false;
+  private isChatPanelOpen: boolean = false;
   private searchValue: string = '';
 
   @Output() isLeftChatOpen = new EventEmitter<boolean>();

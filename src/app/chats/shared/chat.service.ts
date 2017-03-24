@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { CHATS } from './mock-chats';
-
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable()

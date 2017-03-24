@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SharedModule }  from '../shared';
+import { SharedModule } from '../shared';
 import { ChatsComponent } from './chats.component';
 import { ChatListComponent } from './chat-list';
 import { ChatDetailComponent } from './chat-detail';
@@ -7,9 +7,10 @@ import { ChatNewComponent } from './chat-new';
 import { ChatHolderComponent } from './chat-holder';
 import { ChatsRoutingModule } from './chats-routing.module';
 import { MessagesSharedModule } from '../messages';
-import { ChatService } from './shared/chat.service';
+import { ChatService } from './shared/';
 import { ChatNavComponent } from './chat-nav/chat-nav.component';
 import { FilterByNamePipe } from "app/chats/chat-filter.pipe";
+import { UsersService } from '../auth/users';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,10 @@ import { FilterByNamePipe } from "app/chats/chat-filter.pipe";
     MessagesSharedModule,
     ChatsRoutingModule
   ],
-  providers: [ChatService]
+  providers: [
+    ChatService,
+    UsersService
+  ]
 })
 
-export class ChatsModule {}
+export class ChatsModule { }
