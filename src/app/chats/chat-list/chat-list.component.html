@@ -1,8 +1,8 @@
 <ul class="left-chat-users">
   <!--BEGIN USER INFO-->
-  <li class="left-chat-user" 
-      (click)="select({id: chat.id})" 
-      *ngFor="let chat of chats | async" 
+  <li class="left-chat-user"
+      (click)="select({id: chat.id})"
+      *ngFor="let chat of chats | async | fiterByName: searchValue"
       routerLinkActive="active"
       [class.active]="selectedId == chat.id">
     <div class="left-chat-user-photo">
