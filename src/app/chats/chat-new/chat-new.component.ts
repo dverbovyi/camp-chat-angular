@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { User, UsersService } from '../../auth/users/'
+import { User, UserService } from '../../auth/users/'
 import { Chat } from '../shared/';
+import { USERS } from '../../auth/users/mock-users';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'ct-chat-new',
@@ -9,7 +11,7 @@ import { Chat } from '../shared/';
 })
 
 export class ChatNewComponent implements OnInit {
-  users: Promise<User[]>;
+  private users: any[] = USERS;
   userId: number = 1;
   isUsersWrapVisible: boolean = true;
   isUserChecked: boolean = false;
@@ -20,10 +22,10 @@ export class ChatNewComponent implements OnInit {
     creator: this.userId,
     createdAt: new Date()
   };
-  constructor(private usersService: UsersService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.users = this.usersService.getUsers();
+    // this.users = this.userService.getUsers();
   }
 
   onAddUser(btn: HTMLElement, i: number) {

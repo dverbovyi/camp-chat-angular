@@ -2,15 +2,17 @@
   <nav class="chat-links">
     <a routerLink="/" routerLinkActive="active">Home</a>
     <a routerLink="/chat" routerLinkActive="active">Chat</a>
-    <a routerLink="/auth/login" routerLinkActive="active">Login</a>
-    <a routerLink="/auth/register" routerLinkActive="active">Register</a>
+    <ng-container *ngIf="!isLoggedIn">
+      <a routerLink="/auth/login" routerLinkActive="active">Login</a>
+      <a routerLink="/auth/register" routerLinkActive="active">Register</a>
+    </ng-container>
   </nav>
-  
-  <div class="user-profile" *ngIf="authService.isLoggedIn">
+
+  <div class="user-profile" *ngIf="isLoggedIn">
     <a class="user-profile-link">
-      <span class="user-profile-link__name">User Name</span>
+      <span class="user-profile-link__name">{{username}}</span>
       <div class="user-profile-link__photo" style="background-image: url(assets/img/avatar__1.jpg)"></div>
     </a>
-    <button class="log-out  chat-icon-sign-out" (click)="onLogOut()"></button>
+    <button class="log-out  chat-icon-sign-out" (click)="logout()"></button>
   </div>
 </div>
